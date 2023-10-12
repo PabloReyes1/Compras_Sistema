@@ -10,16 +10,29 @@ package Entidades;
  */
 public class Departamento {
     
+    int ID_DEPARTAMENTO_SUCURSAL;
     int ID_SUCURSAL;
     String NOMBRE_DEPARTAMENTO;
     String DESCRIPCION;
-    String PERSONAL;
+    int PERSONAL;
 
-    public Departamento(int ID_SUCURSAL, String NOMBRE_DEPARTAMENTO, String DESCRIPCION, String PERSONAL) {
+    public Departamento() {
+    }
+
+    public Departamento(int ID_DEPARTAMENTO_SUCURSAL, int ID_SUCURSAL, String NOMBRE_DEPARTAMENTO, String DESCRIPCION, int PERSONAL) {
+        this.ID_DEPARTAMENTO_SUCURSAL = ID_DEPARTAMENTO_SUCURSAL;
         this.ID_SUCURSAL = ID_SUCURSAL;
         this.NOMBRE_DEPARTAMENTO = NOMBRE_DEPARTAMENTO;
         this.DESCRIPCION = DESCRIPCION;
         this.PERSONAL = PERSONAL;
+    }
+
+    public int getID_DEPARTAMENTO_SUCURSAL() {
+        return ID_DEPARTAMENTO_SUCURSAL;
+    }
+
+    public void setID_DEPARTAMENTO_SUCURSAL(int ID_DEPARTAMENTO_SUCURSAL) {
+        this.ID_DEPARTAMENTO_SUCURSAL = ID_DEPARTAMENTO_SUCURSAL;
     }
 
     public int getID_SUCURSAL() {
@@ -46,14 +59,12 @@ public class Departamento {
         this.DESCRIPCION = DESCRIPCION;
     }
 
-    public String getPERSONAL() {
+    public int getPERSONAL() {
         return PERSONAL;
     }
 
-    public void setPERSONAL(String PERSONAL) {
+    public void setPERSONAL(int PERSONAL) {
         this.PERSONAL = PERSONAL;
     }
-    
-    
-    
+   
 }

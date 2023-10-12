@@ -22,6 +22,9 @@ public class Pedido {
     String DESCRIPCION_PEDIDO;
     int CANTIDAD;
 
+    public Pedido() {
+    }
+   
     public Pedido(int ID_DEPARTAMENTO_SUCURSAL, String DESCRIPCION, Date FECHA_CREACION, Date FECHA_EXPIRACION, String ESTADO, int ID_PRODUCTO, String NOMBRE_PRODUCTO, String DESCRIPCION_PEDIDO, int CANTIDAD) {
         this.ID_DEPARTAMENTO_SUCURSAL = ID_DEPARTAMENTO_SUCURSAL;
         this.DESCRIPCION = DESCRIPCION;

@@ -10,6 +10,7 @@ package Entidades;
  */
 public class Sucursal {
     
+    int ID_SUCURSAL;
     String CIUDAD;
     String DEPARTAMENTO;
     String DIRECCION;
@@ -20,13 +21,22 @@ public class Sucursal {
     public Sucursal() {
     }
 
-    public Sucursal(String CIUDAD, String DEPARTAMENTO, String DIRECCION, String EMAIL, int TELEFONO, String NOMBRE) {
+    public Sucursal(int ID_SUCURSAL, String CIUDAD, String DEPARTAMENTO, String DIRECCION, String EMAIL, int TELEFONO, String NOMBRE) {
+        this.ID_SUCURSAL = ID_SUCURSAL;
         this.CIUDAD = CIUDAD;
         this.DEPARTAMENTO = DEPARTAMENTO;
         this.DIRECCION = DIRECCION;
         this.EMAIL = EMAIL;
         this.TELEFONO = TELEFONO;
         this.NOMBRE = NOMBRE;
+    }
+
+    public int getID_SUCURSAL() {
+        return ID_SUCURSAL;
+    }
+
+    public void setID_SUCURSAL(int ID_SUCURSAL) {
+        this.ID_SUCURSAL = ID_SUCURSAL;
     }
 
     public String getCIUDAD() {
@@ -76,7 +86,7 @@ public class Sucursal {
     public void setNOMBRE(String NOMBRE) {
         this.NOMBRE = NOMBRE;
     }
-    
-    
+
+
     
 }
