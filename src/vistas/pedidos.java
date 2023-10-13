@@ -8,9 +8,11 @@ package vistas;
 import Conexion.ConexionSQL;
 import Entidades.Departamento;
 import Entidades.Sucursal;
+import Entidades.TipoProducto;
 import Entidades.UbiDepartamento;
 import Metodos.Departamentos;
 import Metodos.Sucursales;
+import Metodos.TipoProductos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,6 +32,7 @@ public final class pedidos extends javax.swing.JFrame {
     public pedidos() {
         initComponents();
         MostrarSucursales();
+        MostrarTipoProducto();
     }
     
     Connection conn = null;   
@@ -144,7 +147,6 @@ public final class pedidos extends javax.swing.JFrame {
         });
 
         ComboProducto.setForeground(new java.awt.Color(0, 51, 102));
-        ComboProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboProducto.setBorder(null);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -334,7 +336,6 @@ public final class pedidos extends javax.swing.JFrame {
         jLabel14.setText("TIPO DE PRODUCTO:");
 
         ComboTipoProducto.setForeground(new java.awt.Color(0, 51, 102));
-        ComboTipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboTipoProducto.setBorder(null);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -494,6 +495,19 @@ public final class pedidos extends javax.swing.JFrame {
         for (int i = 0; i < lista.size(); i++){
             
             ComboSucursal.addItem(lista.get(i).getNOMBRE());
+        }
+    
+    }
+    
+    public void MostrarTipoProducto(){
+        TipoProductos tp = new TipoProductos();
+        
+        ArrayList<TipoProducto> lista = tp.obtenerTipoProductos();
+        ComboTipoProducto.addItem("Seleccionar");
+        
+        for (int i = 0; i < lista.size(); i++){
+            
+            ComboTipoProducto.addItem(lista.get(i).getTIPO_PRODUCTO());
         }
     
     }

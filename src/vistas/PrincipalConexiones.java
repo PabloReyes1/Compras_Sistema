@@ -167,7 +167,7 @@ public class PrincipalConexiones extends javax.swing.JFrame {
             }
             if(con2!=null){
                 btnsql.setBackground(Color.GREEN);
-                loging f1 = new loging();
+                sucursales_crear f1 = new sucursales_crear();
                 f1.setVisible(true);
                 setVisible(false);
             }
