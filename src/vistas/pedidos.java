@@ -6,7 +6,9 @@
 package vistas;
 
 import Conexion.ConexionSQL;
+import Controladores.PedidoControlador;
 import Entidades.Departamento;
+import Entidades.Pedido;
 import Entidades.PedidoDetalle;
 import Entidades.Producto;
 import Entidades.Sucursal;
@@ -16,6 +18,7 @@ import Metodos.Departamentos;
 import Metodos.Productos;
 import Metodos.Sucursales;
 import Metodos.TipoProductos;
+import Procesos_Almacenados.SPPedido;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -483,13 +486,17 @@ public final class pedidos extends javax.swing.JFrame {
 
     private void btnCREARPEDIDOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCREARPEDIDOActionPerformed
         
-        //String DepartamentoSeleccionado = (String) ComboDepartamento.getSelectedItem();
+        String DepartamentoSeleccionado = (String) ComboDepartamento.getSelectedItem();
         
-        //if (!DepartamentoSeleccionado.equals("Seleccionar")) {
-           // int idDepartamento = obtenerIdDepartamentoPorNombre(DepartamentoSeleccionado); // Necesitas implementar este método
+        if (!DepartamentoSeleccionado.equals("Seleccionar")) {
+            int idDepartamento = obtenerIdDepartamentoPorNombre(DepartamentoSeleccionado); // Necesitas implementar este método
             //Date fechaExpiracion = dateChooser.getDate();
-           // String descripcion = txt_descripcion.getText();
-           
+            String descripcion = txt_descripcion.getText();
+            
+            Pedido nuevoPedido = PedidoControlador.insertarPedidoEncabezado(idDepartamento, descripcion);
+            
+            SPPedido.agregarPedidoEncabezado(nuevoPedido);
+            
            TablaPedidos.getModel();
             
             for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -498,11 +505,11 @@ public final class pedidos extends javax.swing.JFrame {
             String DESCRIPCION_PRODUCTO = (String) modelo.getValueAt(i, 2); // Suponiendo que la columna 2 contiene la DESCRIPCION_PRODUCTO
             int CANTIDAD_SOLICITADA = (int) modelo.getValueAt(i, 3); // Suponiendo que la columna 3 contiene la CANTIDAD_SOLICITADA
             
-            System.out.println(ID_PRODUCTO + NOMBRE_PRODUCTO + DESCRIPCION_PRODUCTO + CANTIDAD_SOLICITADA);
+            PedidoDetalle nuevoPedidoDetalle = PedidoControlador.insertarPedidoDetalle(ID_PRODUCTO, NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO, CANTIDAD_SOLICITADA);
             
-            //PedidoDetalle pedidoDetalle = new PedidoDetalle(0, 0, ID_PRODUCTO, NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO, CANTIDAD_SOLICITADA); // Puedes cambiar los valores de ID_PEDIDO_DETALLE y ID_PEDIDO según sea necesario
+            SPPedido.agregarPedidoDetalle(nuevoPedidoDetalle);
             
-            // Aquí puedes hacer lo que quieras con el objeto pedidoDetalle (por ejemplo, guardarlo en una lista o en una base de datos)
+            }
         }
             
             
