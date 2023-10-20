@@ -326,6 +326,8 @@ public final class orden_compra extends javax.swing.JFrame {
             
             SPOrden.agregarOrdenDetalle(nuevoOrdenDetalle);
             
+            //prueba github1
+            
             }
             
         
