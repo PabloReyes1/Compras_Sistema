@@ -26,35 +26,35 @@ public class TipoProductos {
     Statement st;
     
     public ArrayList<TipoProducto> obtenerTipoProductos(){
-    ArrayList<TipoProducto> datosTProducto = new ArrayList<>();
-    
-    try{
-        conn = ConexionSQL.conectar();
         
-        String qry = "SELECT * FROM TIPO_PRODUCTOS";
-        st = conn.createStatement();
-        rs = st.executeQuery(qry);
-        
-        while (rs.next()) {
+        ArrayList<TipoProducto> datosTProducto = new ArrayList<>();
+
+        try {
+            conn = ConexionSQL.conectar();
+
+            String qry = "SELECT * FROM TIPO_PRODUCTOS";
+            st = conn.createStatement();
+            rs = st.executeQuery(qry);
+
+            while (rs.next()) {
                 TipoProducto tipoproducto = new TipoProducto();
                 tipoproducto.setID_TIPO_PRODUCTO(rs.getInt("ID_TIPO_PRODUCTO"));
                 tipoproducto.setTIPO_PRODUCTO(rs.getString("TIPO_PRODUCTO"));
-                
+
                 datosTProducto.add(tipoproducto);
-                
+
             }
-        
-    } catch(SQLException e) {
-    
-        System.out.println("error" + e);
-    }
-    return datosTProducto;
+
+        } catch (SQLException e) {
+
+            System.out.println("error" + e);
+        }
+        return datosTProducto;
     }
     
     
     public ArrayList<Producto> obtenerProductoPorTipodeProducto(int idSucursal){
         ArrayList<Producto> datoproducto = new ArrayList<>();
-        
         try{
             conn = ConexionSQL.conectar();
             
@@ -68,7 +68,7 @@ public class TipoProductos {
                 datoProducto.setID_PRODUCTO(rs.getInt("ID_PRODUCTO"));
                 datoProducto.setNOMBRE(rs.getString("NOMBRE"));
                 datoProducto.setDESCRIPCION(rs.getString("DESCRIPCION"));
-                datoProducto.setPRECIO(rs.getDouble("PRECIO"));
+                datoProducto.setPRECIO(rs.getString("PRECIO"));
                 
                 datoproducto.add(datoProducto);
             }

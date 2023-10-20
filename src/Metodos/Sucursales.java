@@ -48,7 +48,7 @@ public class Sucursales {
     
         System.out.println("error" + e);
     }
-    return datos;
+        return datos;
     }
     
     
@@ -78,35 +78,37 @@ public class Sucursales {
         return departamentos;
     }
     
-      public ArrayList<Sucursal> obtenerSucursales(){
-    ArrayList<Sucursal> datosSucursal = new ArrayList<>();
+    //
     
-    try{
-        conn = ConexionSQL.conectar();
-        
-        String qry = "SELECT * FROM SUCURSALES";
-        st = conn.createStatement();
-        rs = st.executeQuery(qry);
-        
-        while (rs.next()) {
-                Sucursal sucursal = new Sucursal();
-                sucursal.setID_SUCURSAL(rs.getInt("ID_SUCURSAL"));
-                sucursal.setCIUDAD(rs.getString("CIUDAD"));
-                sucursal.setDEPARTAMENTO(rs.getString("DEPARTAMENTO"));
-                sucursal.setDIRECCION(rs.getString("DIRECCION"));
-                sucursal.setEMAIL(rs.getString("EMAIL"));
-                sucursal.setTELEFONO(rs.getInt("TELEFONO"));
-                sucursal.setNOMBRE(rs.getString("NOMBRE"));
-                
-                datosSucursal.add(sucursal);
-                
-            }
-        
-    } catch(SQLException e) {
+    public ArrayList<Sucursal> obtenerSucursales(){
+        ArrayList<Sucursal> datosSucursal = new ArrayList<>();
     
-        System.out.println("error" + e);
-    }
-    return datosSucursal;
+        try{
+            conn = ConexionSQL.conectar();
+
+            String qry = "SELECT * FROM SUCURSALES";
+            st = conn.createStatement();
+            rs = st.executeQuery(qry);
+
+            while (rs.next()) {
+                    Sucursal sucursal = new Sucursal();
+                    sucursal.setID_SUCURSAL(rs.getInt("ID_SUCURSAL"));
+                    sucursal.setCIUDAD(rs.getString("CIUDAD"));
+                    sucursal.setDEPARTAMENTO(rs.getString("DEPARTAMENTO"));
+                    sucursal.setDIRECCION(rs.getString("DIRECCION"));
+                    sucursal.setEMAIL(rs.getString("EMAIL"));
+                    sucursal.setTELEFONO(rs.getInt("TELEFONO"));
+                    sucursal.setNOMBRE(rs.getString("NOMBRE"));
+
+                    datosSucursal.add(sucursal);
+
+                }
+
+        } catch(SQLException e) {
+
+            System.out.println("error" + e);
+        }
+        return datosSucursal;
     }
       
     

@@ -11,19 +11,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author ProcesosE
- */
 public class SPSucursales {
     
     
      public static void agregarSucursal(Sucursal sucursal) {
-         
+
         try (Connection conn = ConexionSQL.conectar()) {
-            
+
             String sql = "EXEC [SP_INGRESAR_SUCURSAL] ?,?,?,?,?,?";
-            
+
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, sucursal.getCIUDAD());
@@ -34,11 +30,11 @@ public class SPSucursales {
             stmt.setString(6, sucursal.getNOMBRE());
 
             stmt.executeUpdate();
-            
-            JOptionPane.showMessageDialog(null,"Datos Agregados Correctamente");
-            
+
+            JOptionPane.showMessageDialog(null, "Datos Agregados Correctamente");
+
         } catch (SQLException e) {
-           
+
             System.out.println("error al enviar datos de sucursal" + e);
         }
     }

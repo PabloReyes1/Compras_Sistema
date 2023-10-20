@@ -10,15 +10,15 @@ package Entidades;
  */
 public class Producto {
     
-    int ID_PRODUCTO;
-    String NOMBRE;
-    String DESCRIPCION;
-    Double PRECIO;
+    private int ID_PRODUCTO;
+    private String NOMBRE;
+    private String DESCRIPCION;
+    private String PRECIO;
 
     public Producto() {
     }
 
-    public Producto(int ID_PRODUCTO, String NOMBRE, String DESCRIPCION, Double PRECIO) {
+    public Producto(int ID_PRODUCTO, String NOMBRE, String DESCRIPCION, String PRECIO) {
         this.ID_PRODUCTO = ID_PRODUCTO;
         this.NOMBRE = NOMBRE;
         this.DESCRIPCION = DESCRIPCION;
@@ -41,11 +41,11 @@ public class Producto {
         this.DESCRIPCION = DESCRIPCION;
     }
 
-    public Double getPRECIO() {
+    public String getPRECIO() {
         return PRECIO;
     }
 
-    public void setPRECIO(Double PRECIO) {
+    public void setPRECIO(String PRECIO) {
         this.PRECIO = PRECIO;
     }
 

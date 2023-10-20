@@ -50,7 +50,7 @@ public class ConexionPost {
         Connection conn = null;
         String url= "jdbc:postgresql://"+getHost()+":"+getPort()+"/"+getBd();
         conn = DriverManager.getConnection(url,getUsuario(),getPassword());
-        JOptionPane.showMessageDialog(null,"Conexion Exitosa a PostgreSQL");
+        //JOptionPane.showMessageDialog(null,"Conexion Exitosa a PostgreSQL");
         return conn;
     }
     

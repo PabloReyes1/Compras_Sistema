@@ -29,6 +29,7 @@ public class PrincipalConexiones extends javax.swing.JFrame {
     public PrincipalConexiones() throws SQLException {
         initComponents(); 
         this.setLocationRelativeTo(null);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -148,7 +149,11 @@ public class PrincipalConexiones extends javax.swing.JFrame {
             }
             if(con1!=null){
                 btnsql.setBackground(Color.GREEN);
-                pedidos f1 = new pedidos();
+                //pedidos f1 = new pedidos();
+                empleados_crear f1 = new empleados_crear();  
+                //articulos f1 = new articulos();
+                //Proveedores_C f1 = new Proveedores_C();
+                //productos_proveedor f1 = new productos_proveedor();
                 f1.setVisible(true);
                 setVisible(false);
             }
@@ -158,6 +163,8 @@ public class PrincipalConexiones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnsqlActionPerformed
 
     private void btnpostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpostActionPerformed
+        
+        /*
         
         try {
             con2 = conectarPost.getConnection();
@@ -174,6 +181,7 @@ public class PrincipalConexiones extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(PrincipalConexiones.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
     }//GEN-LAST:event_btnpostActionPerformed
 
     private void conn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conn1ActionPerformed

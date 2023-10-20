@@ -22,7 +22,7 @@ public class ConexionSQL {
         try {
             conn = DriverManager.getConnection(URL, USER, PASS);
             //JOptionPane.showMessageDialog(null,"Conexion Exitosa a SQL Server");
-            System.out.println("Conexion Exitosa a SQL Server");
+           // System.out.println("Conexion Exitosa a SQL Server");
         } catch (SQLException e) {
             //System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null,"Conexion Erronea a SQL Server");

@@ -12,7 +12,6 @@ import Entidades.Sucursal;
 import Entidades.UbiDepartamento;
 import Metodos.Sucursales;
 import Procesos_Almacenados.SPSucursales;
-import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -467,6 +466,7 @@ public final class sucursales_crear extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void MostrarCiudades(){
+        
         Sucursales suc = new Sucursales();
         
         ArrayList<Ciudad> lista = suc.obtenerDatos();
@@ -479,8 +479,6 @@ public final class sucursales_crear extends javax.swing.JFrame {
     
     }
     
-
-
 // Método para actualizar el ComboBox de Departamento
 public void actualizarComboDepartamento(int idCiudad) {
     ComboDepartamento.removeAllItems(); // Limpiar el combo antes de actualizar

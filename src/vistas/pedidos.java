@@ -29,6 +29,7 @@ public final class pedidos extends javax.swing.JFrame {
     /**
      * Creates new form PEDIDO1
      */
+    
     public pedidos() {
         initComponents();
         MostrarSucursales();
@@ -523,27 +524,27 @@ public final class pedidos extends javax.swing.JFrame {
     }
 }
 
-public int obtenerIdSucursalPorNombre(String nombreSucursal) {
-    int idScucursal = -1; // Valor predeterminado si no se encuentra ninguna coincidencia
-    
-    try {
-        conn = ConexionSQL.conectar();
-        
-        String qry = "SELECT ID_SUCURSAL FROM SUCURSALES WHERE NOMBRE = ?";
-        PreparedStatement ps = conn.prepareStatement(qry);
-        ps.setString(1, nombreSucursal);
-        rs = ps.executeQuery();
-        
-        if (rs.next()) {
-            idScucursal = rs.getInt("ID_SUCURSAL");
+    public int obtenerIdSucursalPorNombre(String nombreSucursal) {
+        int idScucursal = -1; // Valor predeterminado si no se encuentra ninguna coincidencia
+
+        try {
+            conn = ConexionSQL.conectar();
+
+            String qry = "SELECT ID_SUCURSAL FROM SUCURSALES WHERE NOMBRE = ?";
+            PreparedStatement ps = conn.prepareStatement(qry);
+            ps.setString(1, nombreSucursal);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                idScucursal = rs.getInt("ID_SUCURSAL");
+            }
+
+        } catch(SQLException e) {
+            System.out.println("error" + e);
         }
-        
-    } catch(SQLException e) {
-        System.out.println("error" + e);
+
+        return idScucursal;
     }
-    
-    return idScucursal;
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboDepartamento;
