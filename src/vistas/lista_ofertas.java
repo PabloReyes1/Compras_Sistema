@@ -4,17 +4,55 @@
  */
 package vistas;
 
+import Controladores.AdjudicacionControlador;
+import Controladores.PedidoControlador;
+import Entidades.Adjudicacion;
+import Entidades.Oferta;
+import Entidades.Pedido;
+import Entidades.UbiDepartamento;
+import Metodos.Ofertas;
+import Metodos.Pedidos;
+import Metodos.Sucursales;
+import Procesos_Almacenados.SPAdjudicacion;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ProcesosE
  */
-public class lista_ofertas extends javax.swing.JFrame {
+public final class lista_ofertas extends javax.swing.JFrame {
 
+    DefaultTableModel modelo;
+    DefaultTableModel modeluky;
+    
     /**
      * Creates new form lista_ofertas
      */
     public lista_ofertas() {
         initComponents();
+       
+        modelo = new DefaultTableModel();
+        modelo.addColumn("ID PEDIDO");
+        modelo.addColumn("DESCRIPCION");
+        modelo.addColumn("FECHA DE CREACION");
+        modelo.addColumn("ESTADO DEL PEDIDO");
+        
+        this.TablaPedidos.setModel(modelo);
+        
+         MostrarPedidoEncabezado();
+         
+        modeluky = new DefaultTableModel();
+        modeluky.addColumn("NOMBRE PROVEEDOR");
+        modeluky.addColumn("FECHA CREACION");
+        modeluky.addColumn("ESTADO");
+        modeluky.addColumn("ID OFERTA");
+        modeluky.addColumn("ID PROVEEDOR");
+        modeluky.addColumn("ID PEDIDO");
+        
+        this.TablaOfertas.setModel(modeluky);
+         
     }
 
     /**
@@ -27,19 +65,19 @@ public class lista_ofertas extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaPedidos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        TablaOfertas = new javax.swing.JTable();
+        Bt_adjudicar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Combotipoadjudicacion = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -50,13 +88,18 @@ public class lista_ofertas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        TablaPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaPedidosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TablaPedidos);
 
         jLabel1.setText("PEDIDO");
 
         jTextField1.setText("jTextField1");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TablaOfertas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -67,13 +110,23 @@ public class lista_ofertas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        TablaOfertas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaOfertasMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(TablaOfertas);
 
-        jButton1.setText("ADJUDICAR");
+        Bt_adjudicar.setText("ADJUDICAR");
+        Bt_adjudicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bt_adjudicarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("TIPO DE ADJUDICACION");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Combotipoadjudicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "COMPRA PEQUEÑA", "COMPRA GRANDE" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,8 +153,8 @@ public class lista_ofertas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
+                        .addComponent(Combotipoadjudicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Bt_adjudicar))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -120,14 +173,78 @@ public class lista_ofertas extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Combotipoadjudicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(Bt_adjudicar)
                 .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TablaPedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPedidosMouseClicked
+        // TODO add your handling code here:
+        
+         int selectedRow = TablaPedidos.getSelectedRow();
+                    if (selectedRow != -1) {
+                        // Obtiene los datos de la fila seleccionada
+                        int idPedido = (int) TablaPedidos.getValueAt(selectedRow, 0);
+                        
+//                        Pedido nuevoPedido = PedidoControlador.pedidoVista(idPedido, descripcion);
+//                          Oferta nuevaOferta = 
+                        actualizarTablaOfertas(idPedido);
+                        // Muestra los datos en el JTextField
+                        System.out.println("Columna 1: " + idPedido );
+//                        textField.setText("Columna 1: " + data1 + ", Columna 2: " + data2);
+                    }
+        
+        
+    }//GEN-LAST:event_TablaPedidosMouseClicked
+
+    private void Bt_adjudicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_adjudicarActionPerformed
+        // TODO add your handling code here:
+        
+        String tipoAdjudicacion = (String) Combotipoadjudicacion.getSelectedItem();
+        if (!tipoAdjudicacion.equals("Seleccionar")) {
+        
+        int selectedRow = TablaOfertas.getSelectedRow();
+                    if (selectedRow != -1) {
+                        // Obtiene los datos de la fila seleccionada
+                        int idPedido = (int) TablaOfertas.getValueAt(selectedRow, 3);
+                        
+                        Adjudicacion nuevaAdjudicacion = AdjudicacionControlador.insertarAdjudicacion(idPedido, tipoAdjudicacion);
+                        
+                        SPAdjudicacion.agregarOfertaEncabezado(nuevaAdjudicacion);
+//                        Pedido nuevoPedido = PedidoControlador.pedidoVista(idPedido, descripcion);
+//                          Oferta nuevaOferta = 
+//                        actualizarTablaOfertas(idPedido);
+                        // Muestra los datos en el JTextField
+                        System.out.println("Columna 1: " + idPedido );
+//                        textField.setText("Columna 1: " + data1 + ", Columna 2: " + data2);
+                    }
+                    
+        }
+        
+        
+    }//GEN-LAST:event_Bt_adjudicarActionPerformed
+
+    private void TablaOfertasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaOfertasMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = TablaOfertas.getSelectedRow();
+                    if (selectedRow != -1) {
+                        // Obtiene los datos de la fila seleccionada
+                        int idPedido = (int) TablaOfertas.getValueAt(selectedRow, 3);
+                        
+//                        Pedido nuevoPedido = PedidoControlador.pedidoVista(idPedido, descripcion);
+//                          Oferta nuevaOferta = 
+//                        actualizarTablaOfertas(idPedido);
+                        // Muestra los datos en el JTextField
+                        System.out.println("Columna 1: " + idPedido );
+//                        textField.setText("Columna 1: " + data1 + ", Columna 2: " + data2);
+                    }
+        
+        
+    }//GEN-LAST:event_TablaOfertasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -163,17 +280,59 @@ public class lista_ofertas extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void MostrarPedidoEncabezado(){
+        Pedidos ped = new Pedidos();
+        
+       ArrayList<Pedido> datosPedido  = ped.obtenerPedido();
+//        ComboTipoProducto.addItem("Seleccionar");
+        
+        for (Pedido pedido : datosPedido) {
+            Object[] fila = {
+                
+                    pedido.getID_PEDIDO(),
+                    pedido.getDESCRIPCION(),
+                    pedido.getFECHA_CREACION(),
+                    pedido.getESTADO(),
+                    
+            };
+            modelo.addRow(fila);
+        }
+    
+    }
+    
+    public void actualizarTablaOfertas(int idPedidoEncabezado) {
+//    ComboDepartamento.removeAllItems(); // Limpiar el combo antes de actualizar
+    
+    Ofertas of = new Ofertas();
+    ArrayList<Oferta> datosOfertaEncabezado = of.obtenerOfertaEncabezado(idPedidoEncabezado);
+    
+    for (Oferta oferta : datosOfertaEncabezado) {
+            Object[] fila = {
+                
+                
+                    oferta.getNOMBRE_PROVEEDOR(),
+                    oferta.getFECHA_CREACION(),
+                    oferta.getESTADO(),
+                    oferta.getID_OFERTA(),
+                    oferta.getID_PROVEEDOR(),
+                    oferta.getID_PEDIDO()
+                    
+            };
+            modeluky.addRow(fila);
+        }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton Bt_adjudicar;
+    private javax.swing.JComboBox<String> Combotipoadjudicacion;
+    private javax.swing.JTable TablaOfertas;
+    private javax.swing.JTable TablaPedidos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

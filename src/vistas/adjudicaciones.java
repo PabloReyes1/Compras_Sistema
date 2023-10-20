@@ -4,17 +4,49 @@
  */
 package vistas;
 
+import Controladores.AdjudicacionControlador;
+import Controladores.PedidoControlador;
+import Entidades.Adjudicacion;
+import Entidades.Pedido;
+import Metodos.Adjudicaciones;
+import Metodos.Ofertas;
+import Metodos.Pedidos;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ProcesosE
  */
-public class adjudicaciones extends javax.swing.JFrame {
+public final class adjudicaciones extends javax.swing.JFrame {
 
+    DefaultTableModel modelo;
+    private int idPedido;
+    private int idOferta;
+    private int montoAdjudicacion;
+    private String tipoAdjudicacion;
+    
     /**
      * Creates new form adjudicaciones
      */
     public adjudicaciones() {
         initComponents();
+        
+        modelo = new DefaultTableModel();
+        modelo.addColumn("ID ADJUDICACION");
+        modelo.addColumn("ID OFERTA");
+        modelo.addColumn("MONTO ADJUDICACION");
+        modelo.addColumn("TIPO ADJUDICACION");
+        modelo.addColumn("FECHA ADJUDICACION");
+        modelo.addColumn("USUARIO QUE ADJUDICO");
+        
+        this.TablaAdjudicacion.setModel(modelo);
+        
+        mostrarAdjudicaciones();
+        
+         
+         
     }
 
     /**
@@ -27,15 +59,15 @@ public class adjudicaciones extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaAdjudicacion = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        bt_crearorden = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaAdjudicacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -46,13 +78,23 @@ public class adjudicaciones extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        TablaAdjudicacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaAdjudicacionMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TablaAdjudicacion);
 
         jLabel1.setText("ADJUDICACION");
 
         jTextField1.setText("jTextField1");
 
-        jButton1.setText("CREAR ORDEN DE COMPRA");
+        bt_crearorden.setText("CREAR ORDEN DE COMPRA");
+        bt_crearorden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_crearordenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,7 +113,7 @@ public class adjudicaciones extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addComponent(jButton1)))
+                        .addComponent(bt_crearorden)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,12 +128,47 @@ public class adjudicaciones extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(bt_crearorden)
                 .addContainerGap(120, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_crearordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearordenActionPerformed
+        // TODO add your handling code here:
+        
+        orden_compra f1 = new orden_compra(idPedido,idOferta,montoAdjudicacion,tipoAdjudicacion);
+                f1.setVisible(true);
+                setVisible(false);
+        
+        
+        
+    }//GEN-LAST:event_bt_crearordenActionPerformed
+
+    private void TablaAdjudicacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaAdjudicacionMouseClicked
+        // TODO add your handling code here:
+        
+         int selectedRow = TablaAdjudicacion.getSelectedRow();
+                    if (selectedRow != -1) {
+                        // Obtiene los datos de la fila seleccionada
+                        idPedido = (int) TablaAdjudicacion.getValueAt(selectedRow, 0);
+                        idOferta = (int) TablaAdjudicacion.getValueAt(selectedRow, 1);
+                        montoAdjudicacion = (int) TablaAdjudicacion.getValueAt(selectedRow, 2);
+                        tipoAdjudicacion = (String) TablaAdjudicacion.getValueAt(selectedRow, 3);
+                        Date fecha = (Date) TablaAdjudicacion.getValueAt(selectedRow, 4);
+                        String usuario = (String) TablaAdjudicacion.getValueAt(selectedRow, 5);
+                        
+                        Adjudicacion nuevaAdjudicacion = AdjudicacionControlador.adjudicacionVista(idPedido, idOferta, montoAdjudicacion,tipoAdjudicacion,fecha,usuario);
+                        
+                       // Pedido nuevoPedido = PedidoControlador.pedidoVista(idPedido, descripcion);
+                        
+                        
+                        // Muestra los datos en el JTextField
+                        System.out.println("Columna 1: " + idPedido + ", Columna 2: " + idOferta+ "Columna 3: " + montoAdjudicacion + ", Columna 4: " + tipoAdjudicacion+fecha+usuario);
+//                        textField.setText("Columna 1: " + data1 + ", Columna 2: " + data2);
+                    }
+    }//GEN-LAST:event_TablaAdjudicacionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -127,13 +204,37 @@ public class adjudicaciones extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void mostrarAdjudicaciones(){
+        Adjudicaciones ad = new Adjudicaciones();
+        
+       ArrayList<Adjudicacion> datosAdjudicacion  = ad.obtenerAdjudicaciones();
+//        ComboTipoProducto.addItem("Seleccionar");
+        
+        for (Adjudicacion adjudicacion : datosAdjudicacion) {
+            Object[] fila = {
+                
+                    adjudicacion.getID_ADJUDICACION(),
+                    adjudicacion.getID_OFERTA(),
+                    adjudicacion.getMONTO_ADJUDICACION(),
+                    adjudicacion.getTIPO_ADJUDICACION(),
+                    adjudicacion.getFECHA_ADJUDICACION(),
+                    adjudicacion.getUSUARIO_ADJUDICA()
+                    
+            };
+            modelo.addRow(fila);
+        }
+    
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable TablaAdjudicacion;
+    private javax.swing.JButton bt_crearorden;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
