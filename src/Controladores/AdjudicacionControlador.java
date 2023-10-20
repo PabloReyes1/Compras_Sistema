@@ -72,10 +72,10 @@ public class AdjudicacionControlador {
         nuevaAdjudicacion.setTIPO_ADJUDICACION(tipoAdjudicacion);
         nuevaAdjudicacion.setFECHA_ADJUDICACION(fecha);
         nuevaAdjudicacion.setUSUARIO_ADJUDICA(usuario);
-
+            
         return nuevaAdjudicacion;
     }
     
-    
+    System.out.println("pruebaaa");
     
 }
