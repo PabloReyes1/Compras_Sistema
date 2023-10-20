@@ -75,6 +75,7 @@ public class Productos {
             
         } catch(SQLException e) {
             System.out.println("error" + e);
+            System.out.println("prueba" );
         }
         return datoproducto;
     }
