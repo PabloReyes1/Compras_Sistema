@@ -76,6 +76,6 @@ public class AdjudicacionControlador {
         return nuevaAdjudicacion;
     }
     
-    System.out.println("pruebaaa");
+    
     
 }

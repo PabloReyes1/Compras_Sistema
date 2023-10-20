@@ -8,6 +8,7 @@ import Conexion.ConexionSQL;
 import Entidades.Departamento;
 import Entidades.Pedido;
 import Entidades.Proveedor;
+import Entidades.Proveedor1;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,8 +27,8 @@ public class Proveedores {
     ResultSet rs;
     Statement st;
     
-    public ArrayList<Proveedor> obtenerProveedor(){
-    ArrayList<Proveedor> datosProveedor = new ArrayList<>();
+    public ArrayList<Proveedor1> obtenerProveedor(){
+    ArrayList<Proveedor1> datosProveedor = new ArrayList<>();
     
     try{
         conn = ConexionSQL.conectar();
@@ -37,7 +38,7 @@ public class Proveedores {
         rs = st.executeQuery(qry);
         
         while (rs.next()) {
-                Proveedor proveedor = new Proveedor();
+                Proveedor1 proveedor = new Proveedor1();
                 
                 proveedor.setID_PROVEEDOR(rs.getInt("ID_PROVEEDOR"));
                 proveedor.setNOMBRE_PROVEEDOR(rs.getString("NOMBRE_PROVEEDOR"));
@@ -56,8 +57,8 @@ public class Proveedores {
     return datosProveedor;
     }
     
-    public ArrayList<Proveedor> obtenerNombreProveedor(int idProveedor){
-        ArrayList<Proveedor> nombreproveedor = new ArrayList<>();
+    public ArrayList<Proveedor1> obtenerNombreProveedor(int idProveedor){
+        ArrayList<Proveedor1> nombreproveedor = new ArrayList<>();
         
         try{
             conn = ConexionSQL.conectar();
@@ -68,7 +69,7 @@ public class Proveedores {
             rs = ps.executeQuery();
             
             while (rs.next()) {
-                Proveedor nombreProveedor = new Proveedor();
+                Proveedor1 nombreProveedor = new Proveedor1();
                 nombreProveedor.setID_PROVEEDOR(rs.getInt("ID_PROVEEDOR"));
                 nombreProveedor.setNOMBRE_PROVEEDOR(rs.getString("NOMBRE_PROVEEDOR"));
                 nombreProveedor.setNIT(rs.getInt("NIT"));

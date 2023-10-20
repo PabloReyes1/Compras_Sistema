@@ -12,6 +12,7 @@ import Entidades.OfertaDetalle;
 import Entidades.Pedido;
 import Entidades.PedidoDetalle;
 import Entidades.Proveedor;
+import Entidades.Proveedor1;
 import Metodos.Pedidos;
 import Metodos.Proveedores;
 import Procesos_Almacenados.SPOferta;
@@ -464,7 +465,7 @@ public final class ofertas extends javax.swing.JFrame {
     public void MostrarProveedores(){
         Proveedores prov = new Proveedores();
         
-        ArrayList<Proveedor> datosProveedor = prov.obtenerProveedor();
+        ArrayList<Proveedor1> datosProveedor = prov.obtenerProveedor();
         Comboidproveedor.addItem("Seleccionar");
         
         for (int i = 0; i < datosProveedor.size(); i++){
@@ -478,9 +479,9 @@ public final class ofertas extends javax.swing.JFrame {
         Combonombreproveedor.removeAllItems(); // Limpiar el combo antes de actualizar
     
     Proveedores prov = new Proveedores();
-    ArrayList<Proveedor> nombreproveedor = prov.obtenerNombreProveedor(idProveedor);
+    ArrayList<Proveedor1> nombreproveedor = prov.obtenerNombreProveedor(idProveedor);
     
-    for (Proveedor proveedor : nombreproveedor) {
+    for (Proveedor1 proveedor : nombreproveedor) {
         Combonombreproveedor.addItem(proveedor.getNOMBRE_PROVEEDOR());
     }
     }

@@ -40,7 +40,7 @@ public class Productos {
                 datoProducto.setID_PRODUCTO(rs.getInt("ID_PRODUCTO"));
                 datoProducto.setNOMBRE(rs.getString("NOMBRE_PRODUCTO"));
                 datoProducto.setDESCRIPCION(rs.getString("DESCRIPCION"));
-                datoProducto.setPRECIO(rs.getDouble("PRECIO"));
+                datoProducto.setPRECIO(rs.getString("PRECIO"));
                 
                 datoproducto.add(datoProducto);
             }
@@ -68,7 +68,7 @@ public class Productos {
                 datoProducto.setID_PRODUCTO(rs.getInt("ID_PRODUCTO"));
                 datoProducto.setNOMBRE(rs.getString("NOMBRE_PRODUCTO"));
                 datoProducto.setDESCRIPCION(rs.getString("DESCRIPCION"));
-                datoProducto.setPRECIO(rs.getDouble("PRECIO"));
+                datoProducto.setPRECIO(rs.getString("PRECIO"));
                 
                 datoproducto.add(datoProducto);
             }

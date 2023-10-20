@@ -149,15 +149,15 @@ public class PrincipalConexiones extends javax.swing.JFrame {
             }
             if(con1!=null){
                 btnsql.setBackground(Color.GREEN);
-<<<<<<< HEAD
+
                 //pedidos f1 = new pedidos();
-                empleados_crear f1 = new empleados_crear();  
+                //empleados_crear f1 = new empleados_crear();  
                 //articulos f1 = new articulos();
                 //Proveedores_C f1 = new Proveedores_C();
                 //productos_proveedor f1 = new productos_proveedor();
-=======
+
                 adjudicaciones f1 = new adjudicaciones();
->>>>>>> 3e94922dc371c5138ce65e325e72e97cb7611ac0
+
                 f1.setVisible(true);
                 setVisible(false);
             }
