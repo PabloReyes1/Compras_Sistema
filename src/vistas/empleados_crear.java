@@ -475,6 +475,8 @@ public final class empleados_crear extends javax.swing.JFrame {
         if(emp.validar(pdi, nombres, apellidos, sucursal, puesto, telefono, correo, iddepto, direccion, salario)){
             emp.insertarEmpleados(nombres, apellidos, id, puesto, salario, direccion, telefono, correo, pdi);
             emp.limpiar(panelEmpleado);
+            jcsucursal.setSelectedItem("Seleccionar");
+            jcdeptosucu.setSelectedItem("Seleccionar");
         }
     }//GEN-LAST:event_btncrearempleadoActionPerformed
 
@@ -498,9 +500,9 @@ public final class empleados_crear extends javax.swing.JFrame {
         if(emp.validar(pdi, nombres, apellidos, sucursal, puesto, telefono, correo, iddepto, direccion, salario)){
             emp.actualizarEmpleados(pdi, nombres, apellidos, id, puesto, salario, direccion, telefono, correo);
             emp.limpiar(panelEmpleado);
-            jcsucursal.setSelectedItem("Seleccionar");
-            jcdeptosucu.setSelectedItem("");
         }
+        jcsucursal.setSelectedItem("Seleccionar");
+        jcdeptosucu.setSelectedItem("Seleccionar");
     }//GEN-LAST:event_btneditarEActionPerformed
 
     private void btnverEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnverEActionPerformed
