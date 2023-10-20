@@ -12,6 +12,7 @@ import java.util.Date;
  */
 public class Pedido {
     
+    int ID_PEDIDO;
     int ID_DEPARTAMENTO_SUCURSAL;
     String DESCRIPCION;
     Date FECHA_CREACION;
@@ -24,8 +25,9 @@ public class Pedido {
 
     public Pedido() {
     }
-   
-    public Pedido(int ID_DEPARTAMENTO_SUCURSAL, String DESCRIPCION, Date FECHA_CREACION, Date FECHA_EXPIRACION, String ESTADO, int ID_PRODUCTO, String NOMBRE_PRODUCTO, String DESCRIPCION_PEDIDO, int CANTIDAD) {
+
+    public Pedido(int ID_PEDIDO, int ID_DEPARTAMENTO_SUCURSAL, String DESCRIPCION, Date FECHA_CREACION, Date FECHA_EXPIRACION, String ESTADO, int ID_PRODUCTO, String NOMBRE_PRODUCTO, String DESCRIPCION_PEDIDO, int CANTIDAD) {
+        this.ID_PEDIDO = ID_PEDIDO;
         this.ID_DEPARTAMENTO_SUCURSAL = ID_DEPARTAMENTO_SUCURSAL;
         this.DESCRIPCION = DESCRIPCION;
         this.FECHA_CREACION = FECHA_CREACION;
@@ -35,6 +37,14 @@ public class Pedido {
         this.NOMBRE_PRODUCTO = NOMBRE_PRODUCTO;
         this.DESCRIPCION_PEDIDO = DESCRIPCION_PEDIDO;
         this.CANTIDAD = CANTIDAD;
+    }
+
+    public int getID_PEDIDO() {
+        return ID_PEDIDO;
+    }
+
+    public void setID_PEDIDO(int ID_PEDIDO) {
+        this.ID_PEDIDO = ID_PEDIDO;
     }
 
     public int getID_DEPARTAMENTO_SUCURSAL() {
@@ -108,6 +118,8 @@ public class Pedido {
     public void setCANTIDAD(int CANTIDAD) {
         this.CANTIDAD = CANTIDAD;
     }
+   
+    
     
     
     
