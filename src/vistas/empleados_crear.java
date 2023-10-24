@@ -19,6 +19,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -490,7 +491,6 @@ public final class empleados_crear extends javax.swing.JFrame {
         String nombres,apellidos,sucursal,puesto,correo,direccion,iddepto;
         String salario,pdi,telefono;
         
-        
         nombres =txtnombre.getText(); apellidos = txtapellidos.getText(); sucursal = (String) jcsucursal.getSelectedItem();
         puesto = txtpuesto.getText(); telefono = txttelefono.getText(); correo =txtcorreo.getText(); direccion = txtdireccion.getText();
         salario = txtsalario.getText(); pdi = txtdpiE.getText(); iddepto = (String) jcdeptosucu.getSelectedItem();
@@ -507,12 +507,14 @@ public final class empleados_crear extends javax.swing.JFrame {
 
     private void btnverEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnverEActionPerformed
        
-        String dpi = txtdpiE.getText();
-        
-        String sucuE = emp.SecudeNombre(dpi);
-        String deptosucuE = emp.DepartamentoE(dpi);
+        String dpi;
+        dpi = txtdpiE.getText();
         
         if(emp.validarV(dpi)){
+            
+            String sucuE = emp.SecudeNombre(dpi);
+            String deptosucuE = emp.DepartamentoE(dpi);
+            
             try {
                 Entidades.Empleados e = emp.mostrarEmpleadoDPI(dpi);
                 txtnombre.setText(e.getNom());
@@ -528,7 +530,9 @@ public final class empleados_crear extends javax.swing.JFrame {
             } catch (SQLException e) {
                 System.out.println(e);
             }
+            
         }
+       
     }//GEN-LAST:event_btnverEActionPerformed
 
     private void jcsucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcsucursalActionPerformed

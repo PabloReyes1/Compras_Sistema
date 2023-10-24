@@ -50,7 +50,6 @@ public class PrincipalConexiones extends javax.swing.JFrame {
 
         btnsql.setBackground(new java.awt.Color(255, 0, 51));
         btnsql.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnsql.setForeground(new java.awt.Color(0, 0, 0));
         btnsql.setText("Conectar a SQLServer");
         btnsql.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +59,6 @@ public class PrincipalConexiones extends javax.swing.JFrame {
 
         btnpost.setBackground(new java.awt.Color(255, 0, 51));
         btnpost.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnpost.setForeground(new java.awt.Color(0, 0, 0));
         btnpost.setText("Conectar a PostgreSQL");
         btnpost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
