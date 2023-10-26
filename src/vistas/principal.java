@@ -151,7 +151,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_men_depActionPerformed
 
     private void men_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_men_empActionPerformed
-   
+JOptionPane.showMessageDialog(null, "PABLO GEY");
      
         
     }//GEN-LAST:event_men_empActionPerformed
