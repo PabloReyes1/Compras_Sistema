@@ -176,8 +176,7 @@ public class PrincipalConexiones extends javax.swing.JFrame {
     private void conn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conn1ActionPerformed
 
         try {
-<<<<<<< HEAD
-            con1 = ConexionSQL.conectar();
+
             if(con1==null){
                 btnsql.setBackground(Color.RED);
             }
@@ -195,10 +194,10 @@ public class PrincipalConexiones extends javax.swing.JFrame {
                 f1.setVisible(true);
                 setVisible(false);
             }
-=======
+
             ConexionSQL.desconectar(con1);
             btnsql.setBackground(Color.red);
->>>>>>> main
+
         } catch (SQLException ex) {
             Logger.getLogger(PrincipalConexiones.class.getName()).log(Level.SEVERE, null, ex);
         }
