@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
-        <file>
-            <url>src/Procesos_Almacenados/SP_Empleados.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>67</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/ProcesosE/Desktop/bd_proyecto/Compras_Sistema/src/Controladores/OfertaControlador.java</file>
-            <file>file:/C:/Users/ProcesosE/Desktop/bd_proyecto/Compras_Sistema/src/Procesos_Almacenados/SPOrden.java</file>
-            <file>file:/C:/Users/ProcesosE/Desktop/bd_proyecto/Compras_Sistema/src/Controladores/OrdenControlador.java</file>
-            <file>file:/C:/Users/ProcesosE/Desktop/bd_proyecto/Compras_Sistema/src/vistas/ofertas.java</file>
-            <file>file:/C:/Users/ProcesosE/Desktop/bd_proyecto/Compras_Sistema/src/vistas/orden_compra.java</file>
+            <file>file:/C:/Users/ProcesosE/Desktop/cosasasas/Compras_Sistema/src/vistas/loging.java</file>
+            <file>file:/C:/Users/ProcesosE/Desktop/cosasasas/Compras_Sistema/src/vistas/ofertas.java</file>
+            <file>file:/C:/Users/ProcesosE/Desktop/cosasasas/Compras_Sistema/src/vistas/lista_pedidos.java</file>
+            <file>file:/C:/Users/ProcesosE/Desktop/cosasasas/Compras_Sistema/src/vistas/orden_compra.java</file>
         </group>
->>>>>>> 3e94922dc371c5138ce65e325e72e97cb7611ac0
     </open-files>
 </project-private>

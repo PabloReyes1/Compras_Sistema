@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -376,9 +377,17 @@ public final class sucursales_crear extends javax.swing.JFrame {
         String email = TXT_CORREO.getText();
         int telefono = Integer.parseInt(TXT_TELEFONO.getText());
         String nombre = TXT_NOMBRE.getText();
+        String tel = TXT_TELEFONO.getText();
 
+        if (validarDatos(ciudad, departamento, direccion, email, tel, nombre)) {
+        
         Sucursal nuevaSucursal = SucursalControlador.insertarSucursal(ciudad, departamento, direccion, email, telefono, nombre);
         SPSucursales.agregarSucursal(nuevaSucursal);
+        
+        } else {
+        JOptionPane.showMessageDialog(null,"Debe llenar los parametros necesarios");
+        }
+        
     }//GEN-LAST:event_BTN_CREARActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -433,6 +442,17 @@ public final class sucursales_crear extends javax.swing.JFrame {
             }
         });
     }
+    
+    private boolean validarDatos(String ciudad, String departamento, String direccion, String email, String tel, String nombre) {
+    // Agrega tus validaciones aquí
+    // Por ejemplo, verifica si los campos tienen valores válidos
+
+    if (ciudad.equals("Seleccionar") || departamento.equals("Seleccionar") || direccion.isEmpty() || email.isEmpty() || tel.isEmpty() || nombre.isEmpty()) {
+        return false;
+    }
+
+    return true;
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_CREAR;

@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -261,9 +262,9 @@ public final class pedidos extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ComboDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -393,10 +394,11 @@ public final class pedidos extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ComboTipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(167, 167, 167)
+                        .addComponent(ComboTipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(87, 87, 87)
@@ -494,6 +496,9 @@ public final class pedidos extends javax.swing.JFrame {
             //Date fechaExpiracion = dateChooser.getDate();
             String descripcion = txt_descripcion.getText();
             
+            if (validarCampos(idDepartamento, descripcion) && modelo.getRowCount() > 0) {
+                
+            
             Pedido nuevoPedido = PedidoControlador.insertarPedidoEncabezado(idDepartamento, descripcion);
             
             SPPedido.agregarPedidoEncabezado(nuevoPedido);
@@ -509,7 +514,9 @@ public final class pedidos extends javax.swing.JFrame {
             PedidoDetalle nuevoPedidoDetalle = PedidoControlador.insertarPedidoDetalle(ID_PRODUCTO, NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO, CANTIDAD_SOLICITADA);
             
             SPPedido.agregarPedidoDetalle(nuevoPedidoDetalle);
-            
+            }
+            } else{
+            JOptionPane.showMessageDialog(null,"Debe llenar los parametros necesarios");
             }
         }
             
@@ -524,10 +531,13 @@ public final class pedidos extends javax.swing.JFrame {
         int can = Integer.parseInt(Cantidad);
         
         if (!ProductoSeleccionado.equals("Seleccionar")) {
+            
             int idProducto = obtenerIdProductoPorNombre(ProductoSeleccionado); // Necesitas implementar este método
-//            actualizarComboProducto(idProdcuto);
                 InsertarEnTabla(idProducto, can);
-        }
+            
+            
+        } 
+        
         
         
     }//GEN-LAST:event_btnAGREGARActionPerformed
@@ -560,7 +570,7 @@ public final class pedidos extends javax.swing.JFrame {
         String ProductoSeleccionado = (String) ComboProducto.getSelectedItem();
         if (!ProductoSeleccionado.equals("Seleccionar")) {
             int idProdcuto = obtenerIdProductoPorNombreTipo(ProductoSeleccionado); // Necesitas implementar este método
-//            actualizarComboProducto(idProdcuto);
+            //actualizarComboProducto(idProdcuto);
         }
     }//GEN-LAST:event_ComboProductoActionPerformed
 
@@ -749,6 +759,13 @@ public int obtenerIdDepartamentoPorNombre(String nombreDepartamento) {
     }
     
     return idDepartamento;
+}
+
+private boolean validarCampos(int idDepartamento, String descripcion) {
+    if (idDepartamento < 0 || descripcion.isEmpty()) {
+        return false;
+    }
+    return true;
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
