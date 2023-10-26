@@ -166,7 +166,7 @@ public final class Proveedores_C extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(17, 17, 17))
         );
@@ -269,14 +269,13 @@ public final class Proveedores_C extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addComponent(panelProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(15, 15, 15)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -308,20 +307,21 @@ public final class Proveedores_C extends javax.swing.JFrame {
         if(p.valida(nit, nombre, dire, desc, idTP)){
             p.insertarProveedor(nombre, nit, dire, desc, idTPE);
             p.limpiar(panelProveedor);
+            jctipoP.setSelectedItem("Seleccionar");  
         }
-        
-        
     }//GEN-LAST:event_btncrearActionPerformed
 
     private void btnverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnverActionPerformed
         // TODO
         String nit2 = txtnit.getText();
-        int nit=Integer.parseInt(txtnit.getText());
-
-        int idProv = p.idProveedor(nit2);
-        String nombreTP = p.NombreTP(idProv, nit);
         
-        try {
+        if(p.validarBusqueda(nit2)){
+            
+            int nit=Integer.parseInt(txtnit.getText());
+            int idProv = p.idProveedor(nit2);
+            String nombreTP = p.NombreTP(idProv, nit);
+            
+            try {
                 Proveedor e = p.mostrarProveedoresNit(nit);
                 txtnombrep.setText(e.getNombreP());
                 txtdirect.setText(e.getDireccion());
@@ -329,7 +329,9 @@ public final class Proveedores_C extends javax.swing.JFrame {
                 jctipoP.setSelectedItem(nombreTP);
             } catch (SQLException e) {
                 System.out.println(e);
-            }   
+            }  
+        }
+         
     }//GEN-LAST:event_btnverActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
