@@ -22,6 +22,7 @@ import javax.swing.JTextField;
  *
  * @author ajane
  */
+
 public class SP_ProductosProveedor {
     
     Connection con,conn;
@@ -145,7 +146,6 @@ public class SP_ProductosProveedor {
             System.out.println(e);
         } 
     }
-    
     
     public boolean validar(String pro,String nombreprod,String desc,String precio){
         

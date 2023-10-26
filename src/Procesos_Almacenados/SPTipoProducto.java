@@ -155,7 +155,6 @@ public class SPTipoProducto {
         } catch (SQLException e) {
             System.out.println(e);
         } 
-       
     }
     
     public String MTipoProducto(int idA){
@@ -180,7 +179,6 @@ public class SPTipoProducto {
         }
         return NTipoP;
     }
-    
     
     public void eliminarP(int idPE){
         try {
@@ -242,6 +240,5 @@ public class SPTipoProducto {
             }
         }
     }
-    
-    
+   
 }

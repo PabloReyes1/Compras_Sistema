@@ -149,11 +149,11 @@ public class PrincipalConexiones extends javax.swing.JFrame {
                 btnsql.setBackground(Color.GREEN);
 
                 //pedidos f1 = new pedidos();
-                empleados_crear f1 = new empleados_crear();  
-                //articulos f1 = new articulos();
+                //est de pedidos los hizo pablo
+                empleados_crear f1 = new empleados_crear(); //terminado de copiar el SP 
+                //articulos f1 = new articulos(); //termiando de copiar los sp para articulos
                 //Proveedores_C f1 = new Proveedores_C();
                 //productos_proveedor f1 = new productos_proveedor();
-
                 //adjudicaciones f1 = new adjudicaciones();
 
                 f1.setVisible(true);

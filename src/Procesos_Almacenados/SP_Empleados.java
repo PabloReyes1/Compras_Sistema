@@ -32,21 +32,17 @@ public class SP_Empleados {
     
     ConexionPost con1 = new ConexionPost();
     
-    
     public SP_Empleados() throws SQLException{
-        
         this.con = con1.getConnection();
         this.conn = ConexionSQL.conectar();
     }
     
     // Creando los diferentes metodos para poder hacer las peticiones a la BD
-    
     public void insertarEmpleados(String nombres,String apellidos,int iddepto,String puesto,String salario,String direccion,String telefono,String correo,String dpi){
         
         try {
             //para sql server si es necesario usar las llaves para los procedimientos almacenados
             //ya que sin llaves da error y en postgres no se usa 
-            
             cts = conn.prepareCall("{CALL ingresoEmpleados(?,?,?,?,?,?,?,?,?)}");
             cts.setString(1,nombres);
             cts.setString(2,apellidos);
@@ -133,10 +129,9 @@ public class SP_Empleados {
         
         try {
             conn = ConexionSQL.conectar();
-
             String qry = "select ds.NOMBRE_DEPARTAMENTO from departamento_sucursal as ds \n" +
-            "  join empleados as e on ds.ID_DEPARTAMENTO_SUCURSAL=e.ID_DEPARTAMENTO_SUCURSAL\n" +
-            "  join sucursales as s on ds.ID_SUCURSAL=s.ID_SUCURSAL where e.DPI= ?";       
+            "join empleados as e on ds.ID_DEPARTAMENTO_SUCURSAL=e.ID_DEPARTAMENTO_SUCURSAL\n" +
+            "join sucursales as s on ds.ID_SUCURSAL=s.ID_SUCURSAL where e.DPI= ?";       
             
             PreparedStatement ps = conn.prepareStatement(qry);
             ps.setInt(1,Integer.parseInt(nitE));
@@ -162,8 +157,8 @@ public class SP_Empleados {
             conn = ConexionSQL.conectar();
 
             String qry = "select s.NOMBRE from departamento_sucursal as ds \n" +
-            "	join empleados as e on ds.ID_DEPARTAMENTO_SUCURSAL=e.ID_DEPARTAMENTO_SUCURSAL\n" +
-            "	join sucursales as s on ds.ID_SUCURSAL=s.ID_SUCURSAL where e.DPI= ?";
+            "join empleados as e on ds.ID_DEPARTAMENTO_SUCURSAL=e.ID_DEPARTAMENTO_SUCURSAL\n" +
+            "join sucursales as s on ds.ID_SUCURSAL=s.ID_SUCURSAL where e.DPI= ?";
             
             PreparedStatement ps = conn.prepareStatement(qry);
             ps.setInt(1,Integer.parseInt(nitE));
@@ -175,7 +170,6 @@ public class SP_Empleados {
         } catch(SQLException e) {
             System.out.println("error" + e);
         }
-        
         return sucuDepto;
     }
     
@@ -183,6 +177,11 @@ public class SP_Empleados {
         
         if(dpi.isEmpty()){
             JOptionPane.showMessageDialog(null,"INGRESE EL NUMERO DE DPI DEL EMPLEADO");
+            return false;
+        }
+        if(!dpi.isEmpty() && dpi.length()>7 || !dpi.isEmpty() && dpi.length()<7){   
+            
+            JOptionPane.showMessageDialog(null,"TAMAÑO DEL DPI INCORRECTO, DEBE SER DE 7 DIGITOS");
             return false;
         }
         if(nombres.isEmpty()){
@@ -196,8 +195,7 @@ public class SP_Empleados {
         if(sucursal.equals("Seleccionar")){
             JOptionPane.showMessageDialog(null,"ELIGA LA SUCURSAL");
             return false;
-        } else {
-        }
+        } 
         if(puesto.isEmpty()){
             JOptionPane.showMessageDialog(null,"INGRESE EL PUESTO A ASIGNAR A EL EMPLEADO");
             return false;
@@ -251,5 +249,4 @@ public class SP_Empleados {
             }
         }
     }
-     
 }
