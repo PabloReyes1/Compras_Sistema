@@ -156,7 +156,7 @@ public class PrincipalConexiones extends javax.swing.JFrame {
                 //Proveedores_C f1 = new Proveedores_C();
                 //productos_proveedor f1 = new productos_proveedor();
 
-                adjudicaciones f1 = new adjudicaciones();
+                lista_pedidos f1 = new lista_pedidos();
 
                 f1.setVisible(true);
                 setVisible(false);

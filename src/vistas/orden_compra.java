@@ -62,15 +62,15 @@ public final class orden_compra extends javax.swing.JFrame {
         
         this.TablaOfertas.setModel(modelo);
         
-        modeluky = new DefaultTableModel();
-        modeluky.addColumn("ID PRODUCTO");
-        modeluky.addColumn("NOMBRE PRODUCTO");
-        modeluky.addColumn("DESCRIPCION PRODUCTO");
-        modeluky.addColumn("CANTIDAD");
-        modeluky.addColumn("PRECIO");
-        modeluky.addColumn("PRECIO UNIDAD");
-        
-        this.TablaOrdeCompra.setModel(modeluky);
+//        modeluky = new DefaultTableModel();
+//        modeluky.addColumn("ID PRODUCTO");
+//        modeluky.addColumn("NOMBRE PRODUCTO");
+//        modeluky.addColumn("DESCRIPCION PRODUCTO");
+//        modeluky.addColumn("CANTIDAD");
+//        modeluky.addColumn("PRECIO");
+//        modeluky.addColumn("PRECIO UNIDAD");
+//        
+//        this.TablaOrdeCompra.setModel(modeluky);
         
         actualizarCombonombreproveedor(idOferta);
         actualizarTablaOfertas(idOferta);
@@ -107,11 +107,8 @@ public final class orden_compra extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txt_direccion = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TablaOrdeCompra = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
         txt_total = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,22 +150,7 @@ public final class orden_compra extends javax.swing.JFrame {
 
         jLabel14.setText("DIRECCION DE ENTREGA");
 
-        TablaOrdeCompra.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(TablaOrdeCompra);
-
         jLabel15.setText("TOTAL DE ORDEN DE COMPRA");
-
-        jButton2.setText("CREAR ORDEN DE COMPRA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,34 +160,31 @@ public final class orden_compra extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(193, 193, 193)
+                                .addComponent(jLabel12)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_tipodeorden, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel13)
+                                .addGap(18, 18, 18)
+                                .addComponent(ComboPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1)
+                            .addComponent(jSeparator1))
+                        .addContainerGap(41, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel15)
-                        .addGap(18, 18, 18)
+                        .addGap(27, 27, 27)
                         .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(140, 140, 140)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(193, 193, 193)
-                            .addComponent(jLabel12)
-                            .addGap(18, 18, 18)
-                            .addComponent(txt_tipodeorden, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13)
-                            .addGap(18, 18, 18)
-                            .addComponent(ComboPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(35, 35, 35))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel14)
-                            .addGap(18, 18, 18)
-                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(590, 590, 590)
-                            .addComponent(bt_agregar)
-                            .addGap(12, 12, 12))
-                        .addComponent(jSeparator1)
-                        .addComponent(jScrollPane2)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_agregar)
+                        .addGap(50, 50, 50))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(38, 38, 38)
@@ -251,19 +230,15 @@ public final class orden_compra extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bt_agregar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
+                    .addComponent(bt_agregar)
                     .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addComponent(jLabel15))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(22, 22, 22)
@@ -282,7 +257,7 @@ public final class orden_compra extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
                         .addComponent(txt_idpedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(417, Short.MAX_VALUE)))
+                    .addContainerGap(310, Short.MAX_VALUE)))
         );
 
         pack();
@@ -440,9 +415,7 @@ public final class orden_compra extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboPrioridad;
     private javax.swing.JTable TablaOfertas;
-    private javax.swing.JTable TablaOrdeCompra;
     private javax.swing.JButton bt_agregar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -453,7 +426,6 @@ public final class orden_compra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_idadjudicacion;

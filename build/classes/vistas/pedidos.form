@@ -131,19 +131,12 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-<<<<<<< HEAD
                           <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
                           <Component id="ComboTipoProducto" min="-2" pref="206" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                           <Component id="jLabel14" min="-2" pref="194" max="-2" attributes="0"/>
-=======
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="ComboTipoProducto" min="-2" pref="206" max="-2" attributes="0"/>
-                              <Component id="jLabel14" min="-2" pref="194" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
@@ -154,7 +147,6 @@
                                   <Component id="txt_descripcion" min="-2" pref="265" max="-2" attributes="0"/>
                               </Group>
                           </Group>
->>>>>>> 3e94922dc371c5138ce65e325e72e97cb7611ac0
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -408,10 +400,10 @@
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel13" min="-2" pref="91" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="144" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="51" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="ComboDepartamento" min="-2" pref="206" max="-2" attributes="0"/>
                           <Component id="ComboSucursal" min="-2" pref="206" max="-2" attributes="0"/>
