@@ -1,17 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package vistas;
 
 import Conexion.ConexionPost;
-import Conexion.ConexionSQL;
 import java.awt.Color;
+import Conexion.ConexionSQL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import vistas.loging;
+
 
 /**
  *
@@ -19,16 +22,25 @@ import java.util.logging.Logger;
  */
 public class PrincipalConexiones extends javax.swing.JFrame {
 
-    
+    public String campo;
+    public static  String dato;
     private Connection con1,con2;
-    
+    JTextField txt_user = new JTextField(20);
     ConexionPost conectarPost = new ConexionPost();
     ConexionSQL conectarSQL = new ConexionSQL();
-    
+  
     
     public PrincipalConexiones() throws SQLException {
         initComponents(); 
         this.setLocationRelativeTo(null);
+    }
+    public void setCampo(String campo){
+        this.campo = campo;
+        lblusuario.setText(campo);
+        
+    }
+      public String obtenerValorDelCampo() {
+        return txt_user.getText();
         
     }
 
@@ -42,6 +54,8 @@ public class PrincipalConexiones extends javax.swing.JFrame {
         conn2 = new javax.swing.JButton();
         conn1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblusuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -85,8 +99,20 @@ public class PrincipalConexiones extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Eliga a que BD se quiere Conectar");
+
+        jLabel2.setText("BIENVENIDO: ");
+
+        lblusuario.setText("jLabel3");
+        lblusuario.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblusuarioAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,7 +132,12 @@ public class PrincipalConexiones extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(conn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(conn2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(96, 96, 96))))
+                        .addGap(96, 96, 96))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +152,11 @@ public class PrincipalConexiones extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnpost, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(conn2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lblusuario))
+                .addGap(53, 53, 53))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,9 +173,10 @@ public class PrincipalConexiones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnsqlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsqlActionPerformed
+    private void conn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conn1ActionPerformed
 
         try {
+<<<<<<< HEAD
             con1 = ConexionSQL.conectar();
             if(con1==null){
                 btnsql.setBackground(Color.RED);
@@ -159,20 +195,32 @@ public class PrincipalConexiones extends javax.swing.JFrame {
                 f1.setVisible(true);
                 setVisible(false);
             }
+=======
+            ConexionSQL.desconectar(con1);
+            btnsql.setBackground(Color.red);
+>>>>>>> main
         } catch (SQLException ex) {
             Logger.getLogger(PrincipalConexiones.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnsqlActionPerformed
+    }//GEN-LAST:event_conn1ActionPerformed
+
+    private void conn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conn2ActionPerformed
+
+        try {
+            ConexionPost.desconectar(con2);
+            btnpost.setBackground(Color.red);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalConexiones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_conn2ActionPerformed
 
     private void btnpostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpostActionPerformed
-        
-        /*
-        
+
         try {
             con2 = conectarPost.getConnection();
             if(con2==null){
                 btnsql.setBackground(Color.RED);
-                
+
             }
             if(con2!=null){
                 btnsql.setBackground(Color.GREEN);
@@ -183,28 +231,63 @@ public class PrincipalConexiones extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(PrincipalConexiones.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
     }//GEN-LAST:event_btnpostActionPerformed
 
-    private void conn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conn1ActionPerformed
-       
-        try {
-            ConexionSQL.desconectar(con1);
-            btnsql.setBackground(Color.red);
-        } catch (SQLException ex) {
-            Logger.getLogger(PrincipalConexiones.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-    }//GEN-LAST:event_conn1ActionPerformed
+    private void btnsqlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsqlActionPerformed
 
-    private void conn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conn2ActionPerformed
-       
         try {
-            ConexionPost.desconectar(con2);
-            btnpost.setBackground(Color.red);
+            con1 = ConexionSQL.conectar();
+            if(con1==null){
+                btnsql.setBackground(Color.RED);
+            }
+            if(con1!=null){
+                btnsql.setBackground(Color.GREEN);
+           
+                PrincipalConexiones prc = new PrincipalConexiones();
+               
+                prc.setCampo(campo);
+                
+            
+                
+               try (Connection conn =  ConexionSQL.conectar()){
+               String sql = "SELECT ROL FROM usuario WHERE LOGIN_NAME = ?";
+                PreparedStatement stmt = conn.prepareStatement (sql);
+         try {
+            stmt.setString(1, campo);
+        } catch (SQLException ex) {
+            Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+           ResultSet resultSet = stmt.executeQuery();   
+           if (resultSet.next()) {
+           String rol = resultSet.getString("ROL"); 
+                System.out.println(rol);
+           
+           if(rol.equals("empleado")){
+               prc.empleado(true);
+           }else if (rol.equals("Administrador")){
+               prc.Administrador(true);
+           }
+                
+           
+               
+           }  
+            }catch (SQLException ex) {
+            Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
+                   System.out.println(ex);
+        }
+               
+                   
+               }
         } catch (SQLException ex) {
             Logger.getLogger(PrincipalConexiones.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-    }//GEN-LAST:event_conn2ActionPerformed
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_btnsqlActionPerformed
+
+    private void lblusuarioAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblusuarioAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblusuarioAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -252,6 +335,24 @@ public class PrincipalConexiones extends javax.swing.JFrame {
     private javax.swing.JButton conn1;
     private javax.swing.JButton conn2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblusuario;
     // End of variables declaration//GEN-END:variables
+
+public void Administrador(boolean activar) throws SQLException{
+
+        principal pr = new principal();
+        
+        pr.habilitarMenu(true);
+        pr.setVisible(true);
+    
+}
+
+public void empleado(boolean desactivar) throws SQLException{
+    principal pr = new principal();
+    pr.habilitarMenu(false);
+    pr.setVisible(true);
+}
+
 }
