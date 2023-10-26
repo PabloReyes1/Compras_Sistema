@@ -5,9 +5,20 @@
  */
 package vistas;
 
+import Conexion.ConexionSQL;
+import com.toedter.calendar.JDateChooser;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import vistas.principal;
 
 /**
  *
@@ -22,7 +33,14 @@ public class loging extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+   
 
+    // Método para obtener el valor del JTextField
+    public String obtenerValorDelCampo() {
+        return txt_user.getText();
+        
+    }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +52,7 @@ public class loging extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        txr_user = new javax.swing.JTextField();
+        txt_user = new javax.swing.JTextField();
         txt_contra = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -42,7 +60,7 @@ public class loging extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnentrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         btnregresar = new javax.swing.JButton();
@@ -67,14 +85,14 @@ public class loging extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        txr_user.setBackground(new java.awt.Color(255, 255, 255));
-        txr_user.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        txr_user.setForeground(new java.awt.Color(0, 51, 153));
-        txr_user.setBorder(null);
-        txr_user.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        txr_user.addActionListener(new java.awt.event.ActionListener() {
+        txt_user.setBackground(new java.awt.Color(255, 255, 255));
+        txt_user.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        txt_user.setForeground(new java.awt.Color(0, 51, 153));
+        txt_user.setBorder(null);
+        txt_user.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txt_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txr_userActionPerformed(evt);
+                txt_userActionPerformed(evt);
             }
         });
 
@@ -106,11 +124,16 @@ public class loging extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet_lock_locked_padlock_password_secure_security_icon_127100.png"))); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 255));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ENTRAR.png"))); // NOI18N
-        jButton1.setText("ENTRAR");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnentrar.setBackground(new java.awt.Color(51, 51, 255));
+        btnentrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnentrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ENTRAR.png"))); // NOI18N
+        btnentrar.setText("ENTRAR");
+        btnentrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnentrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnentrarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user_customer_person_13976.png"))); // NOI18N
 
@@ -149,7 +172,7 @@ public class loging extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_contra, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txr_user, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -157,7 +180,7 @@ public class loging extends javax.swing.JFrame {
                         .addGap(83, 83, 83)
                         .addComponent(jCheckBox1)
                         .addGap(45, 45, 45)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnentrar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(btnregresar)))
@@ -175,7 +198,7 @@ public class loging extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(txr_user, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -188,7 +211,7 @@ public class loging extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnentrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBox1))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -272,10 +295,10 @@ public class loging extends javax.swing.JFrame {
     private void txt_contraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_contraActionPerformed
-
-    private void txr_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txr_userActionPerformed
+    
+    private void txt_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_userActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txr_userActionPerformed
+    }//GEN-LAST:event_txt_userActionPerformed
 
     private void btnregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarActionPerformed
         try {
@@ -288,6 +311,58 @@ public class loging extends javax.swing.JFrame {
             Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }//GEN-LAST:event_btnregresarActionPerformed
+ String roldeusuario;
+    private void btnentrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnentrarActionPerformed
+
+      
+        
+        
+String nombreUsuarioIngresado = txt_user.getText();
+String contraseñaIngresada = txt_contra.getText();
+ try (Connection conn =  ConexionSQL.conectar()){
+String sql = "SELECT ROL FROM usuario WHERE LOGIN_NAME = ? AND CONTRASEÑA = ?";
+
+ PreparedStatement stmt = conn.prepareStatement (sql);
+        try {
+            stmt.setString(1, nombreUsuarioIngresado);
+        } catch (SQLException ex) {
+            Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            stmt.setString(2, contraseñaIngresada);
+        } catch (SQLException ex) {
+            Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+ResultSet resultSet = stmt.executeQuery();
+
+
+if (resultSet.next()) {
+
+    
+        PrincipalConexiones principall = new PrincipalConexiones(); 
+        principall.setCampo(txt_user.getText());
+        principall.setVisible(true);  
+        
+        this.dispose();
+      
+         
+         
+} else {
+    // Usuario y/o contraseña incorrectos.
+    JOptionPane.showMessageDialog(null,"Nombre de usuario o contraseña incorrectos");
+}
+        
+  
+  
+
+    
+
+    
+}       catch (SQLException ex) {
+            Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnentrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,8 +398,8 @@ public class loging extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnentrar;
     private javax.swing.JButton btnregresar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -339,7 +414,9 @@ public class loging extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField txr_user;
     private javax.swing.JPasswordField txt_contra;
+    private javax.swing.JTextField txt_user;
     // End of variables declaration//GEN-END:variables
-}
+   
+      
+    }
