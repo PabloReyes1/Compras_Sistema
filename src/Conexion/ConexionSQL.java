@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 public class ConexionSQL {
     
     static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=INGETEC";
-    static final String USER = "Sa";
-    static final String PASS = "umg2023";
+    static final String USER = "sa";
+    static final String PASS = "admin";
 
     public static Connection conectar() throws SQLException {
         
@@ -25,7 +25,7 @@ public class ConexionSQL {
             System.out.println("Conexion Exitosa a SQL Server");
         } catch (SQLException e) {
             //System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null,"Conexion Erronea a SQL Server");
+            JOptionPane.showMessageDialog(null,e);
         }
 
         return conn;
