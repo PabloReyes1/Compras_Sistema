@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenu;
 import javax.swing.JOptionPane;
+import vistas.empleados_crear;
 
 
 /**
@@ -48,10 +49,19 @@ public class principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         Menuprincipal = new javax.swing.JMenuBar();
         men_emp = new javax.swing.JMenu();
-        men_sucursales = new javax.swing.JMenu();
-        men_dep = new javax.swing.JMenu();
+        jm_agregarempleados = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        men_sucur = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         men_ordenes = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         men_compras = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        men_pedidos = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        men_ofertas = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,7 +87,7 @@ public class principal extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 1078, Short.MAX_VALUE)
+                .addGap(0, 1087, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -89,22 +99,38 @@ public class principal extends javax.swing.JFrame {
                 men_empActionPerformed(evt);
             }
         });
-        Menuprincipal.add(men_emp);
 
-        men_sucursales.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 102, 204)));
-        men_sucursales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sucursalesgen.png"))); // NOI18N
-        men_sucursales.setText("SUCURSALES");
-        Menuprincipal.add(men_sucursales);
-
-        men_dep.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 102, 255)));
-        men_dep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/departamentos.png"))); // NOI18N
-        men_dep.setText("DEPARTAMENTOS");
-        men_dep.addActionListener(new java.awt.event.ActionListener() {
+        jm_agregarempleados.setText("Agregar Empleados");
+        jm_agregarempleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                men_depActionPerformed(evt);
+                jm_agregarempleadosActionPerformed(evt);
             }
         });
-        Menuprincipal.add(men_dep);
+        men_emp.add(jm_agregarempleados);
+
+        jMenuItem2.setText("Nuevo Usuario");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        men_emp.add(jMenuItem2);
+
+        Menuprincipal.add(men_emp);
+
+        men_sucur.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 102, 204)));
+        men_sucur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sucursalesgen.png"))); // NOI18N
+        men_sucur.setText("SUCURSALES");
+
+        jMenuItem1.setText("Crear sucursales");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        men_sucur.add(jMenuItem1);
+
+        Menuprincipal.add(men_sucur);
 
         men_ordenes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 102, 255)));
         men_ordenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ordenes.png"))); // NOI18N
@@ -114,17 +140,62 @@ public class principal extends javax.swing.JFrame {
                 men_ordenesActionPerformed(evt);
             }
         });
+
+        jMenuItem3.setText("Ver ordenes ");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        men_ordenes.add(jMenuItem3);
+
         Menuprincipal.add(men_ordenes);
 
         men_compras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(0, 102, 255)));
         men_compras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/compras.png"))); // NOI18N
-        men_compras.setText("COMPRAS");
+        men_compras.setText("ADJUDICACIONES");
         men_compras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 men_comprasActionPerformed(evt);
             }
         });
+
+        jMenuItem7.setText("Adjudicaciones");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        men_compras.add(jMenuItem7);
+
         Menuprincipal.add(men_compras);
+
+        men_pedidos.setText("PEDIDOS");
+
+        jMenuItem4.setText("Lista de Pedidos");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        men_pedidos.add(jMenuItem4);
+
+        jMenuItem5.setText("Pedidos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        men_pedidos.add(jMenuItem5);
+
+        Menuprincipal.add(men_pedidos);
+
+        men_ofertas.setText("OFERTAS");
+
+        jMenuItem6.setText("Ver Ofertas");
+        men_ofertas.add(jMenuItem6);
+
+        Menuprincipal.add(men_ofertas);
 
         setJMenuBar(Menuprincipal);
 
@@ -138,21 +209,16 @@ public class principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 106, Short.MAX_VALUE))
+                .addGap(0, 108, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void men_depActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_men_depActionPerformed
-
-        
-        
-    }//GEN-LAST:event_men_depActionPerformed
-
     private void men_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_men_empActionPerformed
-JOptionPane.showMessageDialog(null, "PABLO GEY");
-     
+
+           
+
         
     }//GEN-LAST:event_men_empActionPerformed
 
@@ -165,6 +231,62 @@ JOptionPane.showMessageDialog(null, "PABLO GEY");
         
         
     }//GEN-LAST:event_men_ordenesActionPerformed
+
+    private void jm_agregarempleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_agregarempleadosActionPerformed
+     
+        
+        try {
+            empleados_crear emp = new empleados_crear();
+            emp.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+    }//GEN-LAST:event_jm_agregarempleadosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        sucursales_crear suc = new sucursales_crear();
+        
+        suc.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+     
+        usuario us = new usuario();
+        us.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+       
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+       
+        
+        adjudicaciones ad = new adjudicaciones();
+        ad.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+      
+        lista_pedidos lp = new lista_pedidos();
+        
+        lp.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       pedidos pd = new pedidos();
+       pd.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,13 +329,22 @@ JOptionPane.showMessageDialog(null, "PABLO GEY");
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menuprincipal;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenuItem jm_agregarempleados;
     private javax.swing.JMenu men_compras;
-    private javax.swing.JMenu men_dep;
     private javax.swing.JMenu men_emp;
+    private javax.swing.JMenu men_ofertas;
     private javax.swing.JMenu men_ordenes;
-    private javax.swing.JMenu men_sucursales;
+    private javax.swing.JMenu men_pedidos;
+    private javax.swing.JMenu men_sucur;
     // End of variables declaration//GEN-END:variables
 
    
@@ -280,19 +411,7 @@ JOptionPane.showMessageDialog(null, "PABLO GEY");
         this.men_compras = men_compras;
     }
 
-    /**
-     * @return the men_dep
-     */
-    public javax.swing.JMenu getMen_dep() {
-        return men_dep;
-    }
 
-    /**
-     * @param men_dep the men_dep to set
-     */
-    public void setMen_dep(javax.swing.JMenu men_dep) {
-        this.men_dep = men_dep;
-    }
 
     /**
      * @return the men_emp
@@ -326,21 +445,29 @@ JOptionPane.showMessageDialog(null, "PABLO GEY");
      * @return the men_sucursales
      */
     public javax.swing.JMenu getMen_sucursales() {
-        return men_sucursales;
+        return men_sucur;
     }
 
     /**
      * @param men_sucursales the men_sucursales to set
      */
     public void setMen_sucursales(javax.swing.JMenu men_sucursales) {
-        this.men_sucursales = men_sucursales;
+        this.men_sucur = men_sucursales;
     }
 
 
        public void habilitarMenu(boolean habilitar) {
          men_emp.setEnabled(habilitar);
-      men_sucursales.setEnabled(habilitar);
-      men_dep.setEnabled(habilitar);
+      men_sucur.setEnabled(habilitar);
       men_compras.setEnabled(habilitar);
+      men_pedidos.setEnabled(habilitar);
+      men_ofertas.setEnabled(habilitar);
     }
+       public void habilitar(boolean habilitar){
+           
+        men_emp.setEnabled(habilitar);
+        men_sucur.setEnabled(habilitar);
+        men_ordenes.setEnabled(habilitar);
+       }
+   
 }

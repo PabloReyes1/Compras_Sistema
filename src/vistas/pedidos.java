@@ -56,6 +56,7 @@ public final class pedidos extends javax.swing.JFrame {
         modelo.addColumn("CANTIDAD");
         
         this.TablaPedidos.setModel(modelo);
+           this.setLocationRelativeTo(null);
         
     }
     
@@ -105,7 +106,7 @@ public final class pedidos extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         date_expiracion = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));

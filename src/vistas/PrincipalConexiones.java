@@ -242,10 +242,12 @@ public class PrincipalConexiones extends javax.swing.JFrame {
            String rol = resultSet.getString("ROL"); 
                 System.out.println(rol);
            
-           if(rol.equals("empleado")){
+           if (rol.equals("empleado")){
                prc.empleado(true);
            }else if (rol.equals("Administrador")){
                prc.Administrador(true);
+           }else if (rol.equals("compras")){
+               prc.compras(true);
            }
                 
            
@@ -331,6 +333,11 @@ public void Administrador(boolean activar) throws SQLException{
 public void empleado(boolean desactivar) throws SQLException{
     principal pr = new principal();
     pr.habilitarMenu(false);
+    pr.setVisible(true);
+}
+public void compras(boolean desactivar)throws SQLException{
+    principal pr = new principal();
+    pr.habilitar(false);
     pr.setVisible(true);
 }
 
