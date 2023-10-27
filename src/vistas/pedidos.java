@@ -56,6 +56,7 @@ public final class pedidos extends javax.swing.JFrame {
         modelo.addColumn("CANTIDAD");
         
         this.TablaPedidos.setModel(modelo);
+           this.setLocationRelativeTo(null);
         
     }
     
@@ -106,7 +107,10 @@ public final class pedidos extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+<<<<<<< HEAD
         setBackground(new java.awt.Color(255, 255, 255));
+=======
+>>>>>>> main
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));

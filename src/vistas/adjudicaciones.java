@@ -45,7 +45,7 @@ public final class adjudicaciones extends javax.swing.JFrame {
         
         mostrarAdjudicaciones();
         
-         
+            this.setLocationRelativeTo(null);
          
     }
 
@@ -67,7 +67,7 @@ public final class adjudicaciones extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -89,6 +89,11 @@ public final class adjudicaciones extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TablaAdjudicacion);
 
+<<<<<<< HEAD
+=======
+        jLabel1.setText("ADJUDICACION");
+
+>>>>>>> main
         bt_crearorden.setText("CREAR ORDEN DE COMPRA");
         bt_crearorden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

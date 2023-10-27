@@ -13,7 +13,7 @@ public class ConexionSQL {
     
     static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=INGETEC";
     static final String USER = "Sa";
-    static final String PASS = "umg2023";
+    static final String PASS = "luis123";
 
     public static Connection conectar() throws SQLException {
         

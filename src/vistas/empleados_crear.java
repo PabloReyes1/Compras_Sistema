@@ -19,6 +19,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -184,7 +185,11 @@ public final class empleados_crear extends javax.swing.JFrame {
         );
 
         panelEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+<<<<<<< HEAD
         panelEmpleado.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+=======
+        panelEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+>>>>>>> main
         panelEmpleado.setForeground(new java.awt.Color(0, 102, 204));
 
         jLabel5.setForeground(new java.awt.Color(0, 102, 204));
@@ -387,11 +392,16 @@ public final class empleados_crear extends javax.swing.JFrame {
                 .addGap(11, 11, 11))
         );
 
+<<<<<<< HEAD
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+=======
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+>>>>>>> main
 
         jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 48)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("EMPLEADOS");
 
         jSeparator11.setBackground(new java.awt.Color(0, 51, 153));
@@ -420,7 +430,13 @@ public final class empleados_crear extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
+<<<<<<< HEAD
         jPanel4.setBackground(new java.awt.Color(51, 255, 255));
+=======
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+>>>>>>> main
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -465,7 +481,19 @@ public final class empleados_crear extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 8, Short.MAX_VALUE))
+>>>>>>> main
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,16 +508,18 @@ public final class empleados_crear extends javax.swing.JFrame {
         String nombres,apellidos,sucursal,puesto,correo,direccion,iddepto;
         String salario,pdi,telefono;
         
-        
         nombres =txtnombre.getText(); apellidos = txtapellidos.getText(); sucursal = (String) jcsucursal.getSelectedItem();
         puesto = txtpuesto.getText(); telefono = txttelefono.getText(); correo =txtcorreo.getText(); direccion = txtdireccion.getText();
         salario = txtsalario.getText(); pdi = txtdpiE.getText(); iddepto = (String) jcdeptosucu.getSelectedItem();
         
         int id = IDdeptoSucursal(iddepto);
-        
+         
+       
         if(emp.validar(pdi, nombres, apellidos, sucursal, puesto, telefono, correo, iddepto, direccion, salario)){
             emp.insertarEmpleados(nombres, apellidos, id, puesto, salario, direccion, telefono, correo, pdi);
             emp.limpiar(panelEmpleado);
+            jcsucursal.setSelectedItem("Seleccionar");
+            jcdeptosucu.setSelectedItem("Seleccionar");
         }
     }//GEN-LAST:event_btncrearempleadoActionPerformed
 
@@ -503,7 +533,6 @@ public final class empleados_crear extends javax.swing.JFrame {
         String nombres,apellidos,sucursal,puesto,correo,direccion,iddepto;
         String salario,pdi,telefono;
         
-        
         nombres =txtnombre.getText(); apellidos = txtapellidos.getText(); sucursal = (String) jcsucursal.getSelectedItem();
         puesto = txtpuesto.getText(); telefono = txttelefono.getText(); correo =txtcorreo.getText(); direccion = txtdireccion.getText();
         salario = txtsalario.getText(); pdi = txtdpiE.getText(); iddepto = (String) jcdeptosucu.getSelectedItem();
@@ -513,19 +542,21 @@ public final class empleados_crear extends javax.swing.JFrame {
         if(emp.validar(pdi, nombres, apellidos, sucursal, puesto, telefono, correo, iddepto, direccion, salario)){
             emp.actualizarEmpleados(pdi, nombres, apellidos, id, puesto, salario, direccion, telefono, correo);
             emp.limpiar(panelEmpleado);
-            jcsucursal.setSelectedItem("Seleccionar");
-            jcdeptosucu.setSelectedItem("");
         }
+        jcsucursal.setSelectedItem("Seleccionar");
+        jcdeptosucu.setSelectedItem("Seleccionar");
     }//GEN-LAST:event_btneditarEActionPerformed
 
     private void btnverEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnverEActionPerformed
        
-        String dpi = txtdpiE.getText();
-        
-        String sucuE = emp.SecudeNombre(dpi);
-        String deptosucuE = emp.DepartamentoE(dpi);
+        String dpi;
+        dpi = txtdpiE.getText();
         
         if(emp.validarV(dpi)){
+            
+            String sucuE = emp.SecudeNombre(dpi);
+            String deptosucuE = emp.DepartamentoE(dpi);
+            
             try {
                 Entidades.Empleados e = emp.mostrarEmpleadoDPI(dpi);
                 txtnombre.setText(e.getNom());
@@ -541,7 +572,9 @@ public final class empleados_crear extends javax.swing.JFrame {
             } catch (SQLException e) {
                 System.out.println(e);
             }
+            
         }
+       
     }//GEN-LAST:event_btnverEActionPerformed
 
     private void jcsucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcsucursalActionPerformed

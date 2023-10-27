@@ -5,7 +5,7 @@
  */
 package Procesos_Almacenados;
 
-import Conexion.ConexionPost;
+
 import Conexion.ConexionSQL;
 import Entidades.Empleados;
 import java.sql.CallableStatement;
@@ -25,28 +25,30 @@ import javax.swing.JTextField;
 
 public class SP_Empleados {
     
-    Connection con,conn;
+    Connection conn;
     CallableStatement cts;
     ResultSet rst;
     Statement st;
     
-    ConexionPost con1 = new ConexionPost();
-    
+    //ConexionPost con1 = new ConexionPost();
     
     public SP_Empleados() throws SQLException{
+<<<<<<< HEAD
         
+        //this.con = con1.getConnection();
+        
+=======
         this.con = con1.getConnection();
+>>>>>>> main
         this.conn = ConexionSQL.conectar();
     }
     
     // Creando los diferentes metodos para poder hacer las peticiones a la BD
-    
     public void insertarEmpleados(String nombres,String apellidos,int iddepto,String puesto,String salario,String direccion,String telefono,String correo,String dpi){
         
         try {
             //para sql server si es necesario usar las llaves para los procedimientos almacenados
             //ya que sin llaves da error y en postgres no se usa 
-            
             cts = conn.prepareCall("{CALL ingresoEmpleados(?,?,?,?,?,?,?,?,?)}");
             cts.setString(1,nombres);
             cts.setString(2,apellidos);
@@ -67,11 +69,9 @@ public class SP_Empleados {
     }
     
     public void actualizarEmpleados(String dpi,String nombres,String apellidos,int iddepto,String puesto,String salario,String direccion,String telefono,String correo){
-        
         try {
             //para sql server si es necesario usar las llaves para los procedimientos almacenados
             //ya que sin llaves da error y en postgres no se usa 
-            
             cts = conn.prepareCall("{CALL actualizarEmpleados(?,?,?,?,?,?,?,?,?)}");
             cts.setString(1,nombres);
             cts.setString(2,apellidos);
@@ -131,14 +131,13 @@ public class SP_Empleados {
     
     public String DepartamentoE(String nitE){
         
-        String deptoE="";
+        String deptoE ="";
         
         try {
             conn = ConexionSQL.conectar();
-
             String qry = "select ds.NOMBRE_DEPARTAMENTO from departamento_sucursal as ds \n" +
-                    "	join empleados as e on ds.ID_DEPARTAMENTO_SUCURSAL=e.ID_DEPARTAMENTO_SUCURSAL\n" +
-                    "	join sucursales as s on ds.ID_SUCURSAL=s.ID_SUCURSAL where e.DPI= ?";
+            "join empleados as e on ds.ID_DEPARTAMENTO_SUCURSAL=e.ID_DEPARTAMENTO_SUCURSAL\n" +
+            "join sucursales as s on ds.ID_SUCURSAL=s.ID_SUCURSAL where e.DPI= ?";       
             
             PreparedStatement ps = conn.prepareStatement(qry);
             ps.setInt(1,Integer.parseInt(nitE));
@@ -157,15 +156,15 @@ public class SP_Empleados {
     
     
     public String SecudeNombre(String nitE){
-        String sucuDepto="";
         
+        String sucuDepto="";
         
         try {
             conn = ConexionSQL.conectar();
 
             String qry = "select s.NOMBRE from departamento_sucursal as ds \n" +
-"	join empleados as e on ds.ID_DEPARTAMENTO_SUCURSAL=e.ID_DEPARTAMENTO_SUCURSAL\n" +
-"	join sucursales as s on ds.ID_SUCURSAL=s.ID_SUCURSAL where e.DPI= ?";
+            "join empleados as e on ds.ID_DEPARTAMENTO_SUCURSAL=e.ID_DEPARTAMENTO_SUCURSAL\n" +
+            "join sucursales as s on ds.ID_SUCURSAL=s.ID_SUCURSAL where e.DPI= ?";
             
             PreparedStatement ps = conn.prepareStatement(qry);
             ps.setInt(1,Integer.parseInt(nitE));
@@ -174,20 +173,21 @@ public class SP_Empleados {
             if (rst.next()) {
                 sucuDepto = rst.getString("NOMBRE");
             }
-
         } catch(SQLException e) {
             System.out.println("error" + e);
         }
-        
         return sucuDepto;
     }
-    
-    
     
     public boolean validar(String dpi,String nombres,String apellidos,String sucursal,String puesto,String telefono,String correo,String iddepto,String direccion,String salario){
         
         if(dpi.isEmpty()){
             JOptionPane.showMessageDialog(null,"INGRESE EL NUMERO DE DPI DEL EMPLEADO");
+            return false;
+        }
+        if(!dpi.isEmpty() && dpi.length()>7 || !dpi.isEmpty() && dpi.length()<7){   
+            
+            JOptionPane.showMessageDialog(null,"TAMAÑO DEL DPI INCORRECTO, DEBE SER DE 7 DIGITOS");
             return false;
         }
         if(nombres.isEmpty()){
@@ -201,8 +201,7 @@ public class SP_Empleados {
         if(sucursal.equals("Seleccionar")){
             JOptionPane.showMessageDialog(null,"ELIGA LA SUCURSAL");
             return false;
-        } else {
-        }
+        } 
         if(puesto.isEmpty()){
             JOptionPane.showMessageDialog(null,"INGRESE EL PUESTO A ASIGNAR A EL EMPLEADO");
             return false;
@@ -238,6 +237,7 @@ public class SP_Empleados {
         }
         return true;
     }
+    
     public boolean validarE(String dpi){
         
         if(dpi.isEmpty()){
@@ -255,5 +255,4 @@ public class SP_Empleados {
             }
         }
     }
-     
 }
