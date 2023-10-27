@@ -128,7 +128,6 @@ public class SPProveedor {
         return pr;
     }
    
-    
     /*
     public Proveedor mostrarProveedoresNit(int nit) throws SQLException{
         
@@ -232,6 +231,12 @@ public class SPProveedor {
            JOptionPane.showMessageDialog(null,"INGRESE EL NUMERO DE NIT DEL PROVEEDOR");
            return false;
        }
+       
+       if(!nit.isEmpty() && nit.length()>7 || !nit.isEmpty() && nit.length()<7){   
+           
+            JOptionPane.showMessageDialog(null,"TAMAÑO DEL NIT DEL PROVEEDOR INCORRECTO, DEBE SER DE 7 DIGITOS");
+            return false;
+        }
        if(nom.isEmpty()){
            JOptionPane.showMessageDialog(null,"INGRESE EL NOMBRE DEL PROVEEDOR");
            return false;
@@ -256,18 +261,12 @@ public class SPProveedor {
     }
     
     public boolean validarBusqueda(String nit){
-       
         if(nit.isEmpty()){
+            JOptionPane.showMessageDialog(null,"INGRESE EL NUMERO DE NIT DEL PROVEEDOR QUE DESEA VISUALIZAR");
             return false;
         }
         return true;
     }
-    
-    
-    
-    
-    
-    
     
     public void limpiar(JPanel panel){
         for (Object o : panel.getComponents()) {

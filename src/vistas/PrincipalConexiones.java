@@ -176,8 +176,28 @@ public class PrincipalConexiones extends javax.swing.JFrame {
     private void conn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conn1ActionPerformed
 
         try {
+
+            if(con1==null){
+                btnsql.setBackground(Color.RED);
+            }
+            if(con1!=null){
+                btnsql.setBackground(Color.GREEN);
+
+                //pedidos f1 = new pedidos();
+                //est de pedidos los hizo pablo
+                empleados_crear f1 = new empleados_crear(); //terminado de copiar el SP 
+                //articulos f1 = new articulos(); //termiando de copiar los sp para articulos
+                //Proveedores_C f1 = new Proveedores_C();
+                //productos_proveedor f1 = new productos_proveedor();
+                //adjudicaciones f1 = new adjudicaciones();
+
+                f1.setVisible(true);
+                setVisible(false);
+            }
+
             ConexionSQL.desconectar(con1);
             btnsql.setBackground(Color.red);
+
         } catch (SQLException ex) {
             Logger.getLogger(PrincipalConexiones.class.getName()).log(Level.SEVERE, null, ex);
         }
