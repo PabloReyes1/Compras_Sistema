@@ -45,7 +45,7 @@ public final class adjudicaciones extends javax.swing.JFrame {
         
         mostrarAdjudicaciones();
         
-         
+            this.setLocationRelativeTo(null);
          
     }
 
@@ -65,7 +65,7 @@ public final class adjudicaciones extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         bt_crearorden = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         TablaAdjudicacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,8 +86,6 @@ public final class adjudicaciones extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TablaAdjudicacion);
 
         jLabel1.setText("ADJUDICACION");
-
-        jTextField1.setText("jTextField1");
 
         bt_crearorden.setText("CREAR ORDEN DE COMPRA");
         bt_crearorden.addActionListener(new java.awt.event.ActionListener() {

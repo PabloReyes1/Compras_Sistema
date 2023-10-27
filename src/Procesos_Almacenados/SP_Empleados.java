@@ -5,7 +5,7 @@
  */
 package Procesos_Almacenados;
 
-import Conexion.ConexionPost;
+
 import Conexion.ConexionSQL;
 import Entidades.Empleados;
 import java.sql.CallableStatement;
@@ -25,15 +25,21 @@ import javax.swing.JTextField;
 
 public class SP_Empleados {
     
-    Connection con,conn;
+    Connection conn;
     CallableStatement cts;
     ResultSet rst;
     Statement st;
     
-    ConexionPost con1 = new ConexionPost();
+    //ConexionPost con1 = new ConexionPost();
     
     public SP_Empleados() throws SQLException{
+<<<<<<< HEAD
+        
+        //this.con = con1.getConnection();
+        
+=======
         this.con = con1.getConnection();
+>>>>>>> main
         this.conn = ConexionSQL.conectar();
     }
     

@@ -6,9 +6,21 @@
         <group/>
 =======
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Hermanos%20Osorio/Desktop/Proyecto_basededatos/Compras_Sistema/src/vistas/empleados_crear.java</file>
+            <file>file:/C:/Users/Hermanos%20Osorio/Desktop/Proyecto_basededatos/Compras_Sistema/src/vistas/Eliminar_usuario.java</file>
+            <file>file:/C:/Users/Hermanos%20Osorio/Desktop/Proyecto_basededatos/Compras_Sistema/src/vistas/lista_pedidos.java</file>
+            <file>file:/C:/Users/Hermanos%20Osorio/Desktop/Proyecto_basededatos/Compras_Sistema/src/vistas/sucursales_crear.java</file>
+            <file>file:/C:/Users/Hermanos%20Osorio/Desktop/Proyecto_basededatos/Compras_Sistema/src/vistas/lista_ofertas.java</file>
+            <file>file:/C:/Users/Hermanos%20Osorio/Desktop/Proyecto_basededatos/Compras_Sistema/src/vistas/PrincipalConexiones.java</file>
+            <file>file:/C:/Users/Hermanos%20Osorio/Desktop/Proyecto_basededatos/Compras_Sistema/src/vistas/principal.java</file>
+            <file>file:/C:/Users/Hermanos%20Osorio/Desktop/Proyecto_basededatos/Compras_Sistema/src/vistas/usuario.java</file>
+            <file>file:/C:/Users/Hermanos%20Osorio/Desktop/Proyecto_basededatos/Compras_Sistema/src/vistas/adjudicaciones.java</file>
+=======
             <file>file:/C:/Users/ProcesosE/Desktop/cosasasas/Compras_Sistema/src/vistas/FACTURA.java</file>
             <file>file:/C:/Users/ProcesosE/Desktop/cosasasas/Compras_Sistema/src/vistas/DetallesFac.java</file>
             <file>file:/C:/Users/ProcesosE/Desktop/cosasasas/Compras_Sistema/src/vistas/VERFACTURAS.java</file>
+>>>>>>> main
         </group>
 >>>>>>> main
     </open-files>

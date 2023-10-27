@@ -41,7 +41,7 @@ public final class lista_pedidos extends javax.swing.JFrame {
         this.TablaPedidos.setModel(modelo);
         
          MostrarPedidoEncabezado();
-        
+           this.setLocationRelativeTo(null);
     }
 
     /**
@@ -61,7 +61,7 @@ public final class lista_pedidos extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaPedidos = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         BT_OFERTAR.setText("OFERTAR");
         BT_OFERTAR.addActionListener(new java.awt.event.ActionListener() {
